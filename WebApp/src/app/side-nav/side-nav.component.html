@@ -1,0 +1,51 @@
+<mat-sidenav-container class="app-side-nav-container">
+  <mat-sidenav #sidenav mode="side" class="example-sidenav" [opened]="toggle" [fixedInViewport]="false" [fixedTopGap]="0" [fixedBottomGap]="0">
+    <mat-nav-list>
+      <mat-list-item>
+        <button class="note-list-button" mat-button mat-line (click)="onShowNotes()">
+          <mat-icon>note</mat-icon>
+          <span>Notes</span>
+        </button>
+      </mat-list-item>
+      <mat-list-item>
+        <button class="reminder-list-button" mat-button mat-line (click)="onShowReminders()">
+          <mat-icon>alarm</mat-icon>
+          <span>Reminders</span>
+        </button>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <ng-container mat-subheader>
+        <h3 class="side-nav-sub-header" mat-subheader>Categories</h3>
+        <!-- <button mat-raised-button>Edit</button> -->
+      </ng-container>
+      <mat-list-item *ngFor="let category of categories">
+        <button class="category-list-button" mat-button mat-line (click)="onShowCategoryNotes(category.id)">
+          <mat-icon>label</mat-icon>
+          <span>{{category.categoryName}}</span>
+        </button>
+        <button matTooltip='Edit Category' mat-icon-button (click)="onEditCategory(category)">
+          <mat-icon aria-label="Edit Category">mode_edit</mat-icon>
+        </button>
+        <button matTooltip='Delete Category' mat-icon-button (click)="onDeleteCategory(category)">
+          <mat-icon aria-label="Delete Category">delete</mat-icon>
+        </button>
+      </mat-list-item>
+      <mat-list-item>
+        <button id="addCategory" mat-button mat-line (click)="onCreateCategory()">
+          <mat-icon>add</mat-icon>
+          <span>Add Category</span>
+        </button>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <!-- <router-outlet></router-outlet> -->
+    <app-note-taker></app-note-taker>
+
+    <!-- Router for notesview / listview -->
+    <router-outlet></router-outlet>
+
+    <!-- Edit view -->
+    <router-outlet name="noteEditOutlet"></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

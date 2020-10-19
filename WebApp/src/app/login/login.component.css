@@ -1,0 +1,18 @@
+small {
+    color: red;
+}
+
+.form-c-login-wrapper {
+    /* display: flex;
+    justify-content: center;
+    margin-top: 40px; */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -100px;
+}
+
+.error-message {
+    color: red;
+}

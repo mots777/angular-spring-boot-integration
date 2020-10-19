@@ -1,0 +1,20 @@
+<form (ngSubmit)="submitReminder(reminderForm)" #reminderForm="ngForm">
+  <div class="keep-c-reminder-edit-form">
+    <input *ngIf="isEditMode" name="reminderId" [(ngModel)]="reminder.reminderId" type="hidden">
+    <mat-label>Reminder for {{note.noteTitle}}</mat-label>
+    <mat-form-field>
+      <input matInput [(ngModel)]="reminder.reminderName" name="reminderName" placeholder="Name" #name="ngModel">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [(ngModel)]="reminder.reminderDescription" name="reminderDescription" placeholder="Description" #description="ngModel">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [(ngModel)]="reminder.reminderType" name="reminderType" placeholder="Type" #type="ngModel">
+    </mat-form-field>
+  </div>
+  <div class="keep-c-reminder-edit-btn-wrapper">
+    <button *ngIf="isEditMode" mat-button type="button" (click)="close()">Cancel</button>
+    <span class="flex-spacer"></span>
+    <button mat-button type="submit">Save</button>
+  </div>
+</form>

@@ -1,0 +1,52 @@
+<div class="keep-c-note-card">
+  <mat-card (mouseenter)="enter()" (mouseleave)="leave()">
+    <div class="keep-c-note-click-area" (click)="openEditNoteView()">
+      <mat-card-title>{{note.noteTitle}}</mat-card-title>
+      <mat-card-content>{{note.noteContent}}</mat-card-content>
+    </div>
+    
+    <mat-chip-list *ngIf="!(note.category == null)">
+        <!-- Show the category -->
+        <mat-chip color="primary" [removable]="removable" selected
+        (removed)="onDeleteCategory(note.category)">
+            <mat-icon (click)="openEditCategoryView(note.category.id)">label</mat-icon>
+            <span [matTooltip]="note.category?.categoryName" (click)="openEditCategoryView(note.category.id)">{{note.category?.categoryName}}</span>
+            <mat-icon (click)="openEditCategoryView(note.category.id)">update</mat-icon>
+            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>           
+        </mat-chip>
+    </mat-chip-list>
+
+    
+    <mat-chip-list>
+      <!-- Show the existing reminders -->
+      <mat-chip *ngFor="let reminder of note?.reminders" [removable]="removable" 
+      [selectable]="selectable" (removed)="onDeleteReminder(reminder)">
+        <mat-icon (click)="openEditReminderView(reminder)">alarm</mat-icon>
+        <span [matTooltip]="reminder.reminderName" (click)="openEditReminderView(reminder.reminderId)">{{reminder.reminderName}}</span>
+        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+      </mat-chip>
+    </mat-chip-list>
+    <mat-card-actions *ngIf="hoverIndex === true">
+      <!-- Button to add note content -->
+      <button mat-icon-button (click)="openEditNoteView()"
+       matTooltip="edit" aria-label="Button that displays a tooltip when focused or hovered over">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <!-- Button to add reminder -->
+      <button mat-icon-button (click)="openAddReminderView()"
+       matTooltip="remind me" aria-label="Button that displays a tooltip when focused or hovered over">
+        <mat-icon>alarm</mat-icon>
+      </button>
+      <!-- Button to add category  -->
+      <button id="add-category-to-note" mat-icon-button (click)="openAddCategoryView()" *ngIf="(note.category == null)"
+       matTooltip="move to a category" aria-label="Button that displays a tooltip when focused or hovered over">
+        <mat-icon>label</mat-icon>
+      </button>
+      <!-- Button to delete note -->
+      <button id="delete-note" mat-icon-button (click)="openDeleteNoteDialog()"
+       matTooltip="delete" aria-label="Button that displays a tooltip when focused or hovered over">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

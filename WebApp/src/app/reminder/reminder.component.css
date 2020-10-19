@@ -1,0 +1,9 @@
+.keep-c-reminder-edit-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.keep-c-reminder-edit-btn-wrapper {
+    display: flex;
+    justify-content: flex-end;
+}

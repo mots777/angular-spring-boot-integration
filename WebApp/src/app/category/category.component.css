@@ -1,0 +1,9 @@
+.keep-c-category-edit-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.keep-c-category-edit-btn-wrapper {
+    display: flex;
+    justify-content: flex-end;
+}

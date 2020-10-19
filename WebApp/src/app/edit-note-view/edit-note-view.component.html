@@ -1,0 +1,18 @@
+<div class="keep-c-note-edit-form">
+  <mat-form-field>
+    <input matInput [(ngModel)]="note.noteTitle" name="editTitle" id="editTitle" placeholder="Title">
+  </mat-form-field>
+  <mat-form-field>
+    <textarea matInput [(ngModel)]="note.noteContent" name="editText" id="editText" placeholder="Text area"></textarea>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select [(ngModel)]="note.noteStatus" placeholder="State">
+      <mat-option value="not-started">Not Started</mat-option>
+      <mat-option value="started">Started</mat-option>
+      <mat-option value="completed">Completed</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div class="keep-c-edit-btn-wrapper">
+  <button mat-button (click)="saveEditedNote()">Save</button>
+</div>

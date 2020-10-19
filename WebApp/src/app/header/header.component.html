@@ -1,0 +1,77 @@
+<mat-toolbar color="primary" *ngIf="!isReminderView && !isCategoryView">
+    <mat-toolbar-row>
+        <button id="sidenav" *ngIf="isloggedIn" (click)="fireToggleSideNav()" style="background-color:transparent;border-style:none;cursor:pointer;">
+            <i class="material-icons toolbar-link-icon" style="color:white;">dehaze</i>
+        </button>
+        <span class="flex-spacer"></span>
+        <span routerLink="/">Keep</span>
+        <span class="header-span-fill-remaining-space"></span>
+        <span *ngIf="isloggedIn">
+            <mat-form-field>
+                <input id="search" type="text" matInput [formControl]="myControl" [(ngModel)]="searchText">
+                <mat-placeholder class="keep-search-placeholder">Search</mat-placeholder>
+                <button mat-button *ngIf="search!=''" matSuffix mat-icon-button aria-label="Clear" (click)="clear()">
+                    <mat-icon>close</mat-icon>
+                </button>
+                <button id="search-button" mat-button matSuffix mat-icon-button aria-label="Search" (click)="onSearch()">
+                    <mat-icon>search</mat-icon>
+                </button>
+            </mat-form-field>
+        </span>
+        <span *ngIf="!isNoteView && isloggedIn">
+            <button (click)="switchToNoteView()" routerLink="dashboard/view/listview" style="background-color:transparent;border-style:none;cursor:pointer;">
+                <i class="material-icons toolbar-link-icon" style="color:white;">list</i>
+                <!-- <mat-icon color="primary">list</mat-icon> -->
+            </button>
+        </span>
+        <span *ngIf="isNoteView && isloggedIn">
+            <button (click)="switchToNoteView()" routerLink="dashboard/view/noteview" style="background-color:transparent;border-style:none;cursor:pointer;">
+                <i class="material-icons toolbar-link-icon" style="color:white;">dashboard</i>
+                <!-- <mat-icon>dashboard</mat-icon> -->
+            </button>
+        </span>
+        <span *ngIf="isloggedIn">
+            <button (click)="onlogout()" style="background-color:transparent;border-style:none;cursor:pointer;">
+                <i class="material-icons toolbar-link-icon" style="color:white;">power_off</i>
+            </button>
+        </span>
+    </mat-toolbar-row>
+</mat-toolbar>
+<!-- ReminderView -->
+<mat-toolbar color="accent" *ngIf="isReminderView || isCategoryView">
+    <mat-toolbar-row>
+        <button *ngIf="isloggedIn" (click)="fireToggleSideNav()" style="background-color:transparent;border-style:none;cursor:pointer;">
+            <i class="material-icons toolbar-link-icon" style="color:white;">dehaze</i>
+        </button>
+        <span class="flex-spacer"></span>
+        <span *ngIf="isReminderView">Reminders</span>
+        <span *ngIf="!isReminderView">Category</span>
+        <span class="header-span-fill-remaining-space"></span>
+        <span *ngIf="isloggedIn">
+            <mat-form-field>
+                <input id="search" type="text" matInput [formControl]="myControl">
+                <mat-placeholder class="keep-search-placeholder">Search</mat-placeholder>
+                <button id="search-button" mat-button matSuffix mat-icon-button aria-label="Search" (click)="onSearch()">
+                    <mat-icon>search</mat-icon>
+                </button>
+            </mat-form-field>
+        </span>
+        <span *ngIf="!isNoteView && isloggedIn">
+            <button (click)="switchToNoteView()" routerLink="dashboard/view/listview" style="background-color:transparent;border-style:none;cursor:pointer;">
+                <i class="material-icons toolbar-link-icon" style="color:white;">list</i>
+                <!-- <mat-icon color="primary">list</mat-icon> -->
+            </button>
+        </span>
+        <span *ngIf="isNoteView && isloggedIn">
+            <button (click)="switchToNoteView()" routerLink="dashboard/view/noteview" style="background-color:transparent;border-style:none;cursor:pointer;">
+                <i class="material-icons toolbar-link-icon" style="color:white;">dashboard</i>
+                <!-- <mat-icon>dashboard</mat-icon> -->
+            </button>
+        </span>
+        <span *ngIf="isloggedIn">
+            <button (click)="onlogout()" style="background-color:transparent;border-style:none;cursor:pointer;">
+                <i class="material-icons toolbar-link-icon" style="color:white;">power_off</i>
+            </button>
+        </span>
+    </mat-toolbar-row>
+</mat-toolbar>

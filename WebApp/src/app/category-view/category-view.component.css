@@ -1,0 +1,6 @@
+.keep-c-list-container {
+    margin-top: 20px;
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-around;
+}

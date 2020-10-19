@@ -1,0 +1,3 @@
+<app-header [isloggedIn]="isLoggedIn|async" (reminderClicked)="onReminderView()" (logout)="doLogout()" (toggleSideNav)="onToggleSideNav($event)"></app-header>
+
+<router-outlet></router-outlet> 

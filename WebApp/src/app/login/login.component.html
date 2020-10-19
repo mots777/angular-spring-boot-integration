@@ -1,0 +1,43 @@
+<div class="form-c-login-wrapper">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>Login</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form class="example-form" #form="ngForm" (submit)="loginSubmit(form.value)">
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+            <td>
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Username" [(ngModel)]="userId" name="userId" id="userId" ngModel #name="ngModel" required>
+              </mat-form-field>
+              <small *ngIf="(name.touched || name.dirty) && name.invalid">This field is required</small>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Password" [(ngModel)]="userPassword" type="password" name="userPassword" id="userPassword" ngModel #password="ngModel"
+                  required>
+              </mat-form-field>
+            </td>
+            <small *ngIf="(password.touched || password.dirty) && password.invalid">This field is required</small>
+          </tr>
+        </table>
+        <div>
+          <button mat-raised-button type="submit" id="login" [disabled]="form.invalid" color="primary">Login</button>
+        </div>
+        <div *ngIf='submitMessage'>
+          <label class="error-message">{{submitMessage}}</label>
+        </div>
+      </form>
+      <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+    </mat-card-content>
+    <mat-card-actions>
+      <span>
+        <small>Do you have an account yet?</small>
+      </span>
+      <button id="signup" mat-raised-button routerLink="/signup">Sign Up</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

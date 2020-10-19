@@ -1,0 +1,9 @@
+.keep-c-note-edit-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.keep-c-edit-btn-wrapper {
+    display: flex;
+    justify-content: flex-end;
+}

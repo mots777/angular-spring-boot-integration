@@ -1,0 +1,7 @@
+<div class="keep-c-list-container">
+    <mat-grid-list cols="4" rowHeight="1:1.2">
+        <mat-grid-tile class="keep-c-tile" *ngFor="let note of notes">
+            <app-note [note]="note"></app-note>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>

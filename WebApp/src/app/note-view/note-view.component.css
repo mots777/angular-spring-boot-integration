@@ -1,0 +1,22 @@
+.keep-c-list-container {
+    margin-top: 20px;
+    /* display: flex;
+    flex-flow: wrap; */
+    /* justify-content: space-around; */
+}
+
+.keep-c-tile {
+    display: block;
+    /* position: absolute; */
+    overflow: visible;
+    align-items: initial;
+    /* align-content: initial; */
+    /* padding-top: 0; */
+    /* align-items: initial;
+    justify-content: initial; */
+    /* align-self: initial; */ 
+    /* padding-top: 0%;    */
+    /* position: fixed; */
+    /* text-align: start; */
+}
+

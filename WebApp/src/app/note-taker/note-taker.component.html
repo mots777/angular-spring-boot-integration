@@ -1,0 +1,54 @@
+<div class="keep-c-note-taker-expansion-panel">
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Take a note
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="keep-c-note-taker-form">
+      <mat-form-field>
+        <input matInput [(ngModel)]="note.noteTitle" name="title" id="title" placeholder="Title">
+        <button mat-button *ngIf="note.noteTitle" matSuffix mat-icon-button aria-label="Clear" (click)="note.noteTitle=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+      <mat-form-field>
+        <textarea matInput [(ngModel)]="note.noteContent" name="text" id="text" placeholder="Content"></textarea>
+        <button mat-button *ngIf="note.noteContent" matSuffix mat-icon-button aria-label="Clear" (click)="note.noteContent=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder="Category" [(ngModel)]="note.category" [disabled]="disableCategorySelect">
+          <mat-option [value]=null>None</mat-option>
+          <mat-option *ngFor="let category of categories" [value]="category">
+            {{category.categoryName}}
+          </mat-option>
+        </mat-select>
+        <button mat-button matSuffix mat-icon-button aria-label="Add" (click)="onCreateCategory()">
+          <mat-icon>add_circle</mat-icon>
+        </button>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select id="note-taker-reminder-list" placeholder="Reminder" [(ngModel)]="note.reminders" multiple [disabled]="disableReminderSelect">
+          <mat-option *ngFor="let reminder of reminders" [value]="reminder">
+            {{reminder.reminderName}}
+          </mat-option>
+        </mat-select>
+        <button mat-button matSuffix mat-icon-button aria-label="Add" (click)="onCreateReminder()">
+          <mat-icon>alarm_add</mat-icon>
+        </button>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select [(ngModel)]="note.noteStatus" placeholder="State">
+          <mat-option value="not-started">Not Started</mat-option>
+          <mat-option value="started">Started</mat-option>
+          <mat-option value="completed">Completed</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="keep-c-done-btn-wrapper">
+      <button id="notetaker-done" mat-button (click)="takeNote()" [disabled]="note.noteTitle === '' || note.noteContent === ''">Done</button>
+    </div>
+  </mat-expansion-panel>
+</div>

@@ -1,0 +1,18 @@
+.app-side-nav-container {
+    min-height: 90vh;
+}
+
+.category-list-button {
+    /* display: flex; */
+    text-align: left;
+}
+
+.note-list-button {
+    /* display: flex; */
+    text-align: left;
+}
+
+.reminder-list-button {
+    /* display: flex; */
+    text-align: left;
+}

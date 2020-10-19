@@ -1,0 +1,26 @@
+<form (ngSubmit)="submitCategory(categoryForm)" #categoryForm="ngForm">
+  <div class="keep-c-category-edit-form">
+    <input *ngIf="isEditMode" name="id" [(ngModel)]="category.id" type="hidden">
+    <mat-label *ngIf="!isEditMode">Add Category</mat-label>
+    <mat-label *ngIf="isEditMode">Edit Category for {{note.noteTitle}}</mat-label>
+    <mat-form-field *ngIf="!isEditMode || (isEditMode && !showCategoryList)">
+      <input matInput [(ngModel)]="category.categoryName" name="categoryName" id="categoryName" placeholder="Name" #name="ngModel">
+    </mat-form-field>
+    <mat-form-field *ngIf="!isEditMode || (isEditMode && !showCategoryList)">
+      <input matInput [(ngModel)]="category.categoryDescription" name="categoryDescription" id="categoryDescription" placeholder="Description" #description="ngModel">
+    </mat-form-field>
+    <mat-form-field *ngIf="isEditMode && showCategoryList">
+      <mat-select [(value)]="selected" name="id" [(ngModel)]="category.id" >
+        <mat-option [value]=null>None</mat-option>
+        <mat-option *ngFor="let category of categories" [value]="category.id">
+          {{category.categoryName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="keep-c-category-edit-btn-wrapper">
+    <button *ngIf="isEditMode" mat-button type="button" (click)="close()">Cancel</button>
+    <span class="flex-spacer"></span>
+    <button mat-button type="submit">Save</button>
+  </div>
+</form>

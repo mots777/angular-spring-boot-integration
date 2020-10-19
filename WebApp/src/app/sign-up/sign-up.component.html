@@ -1,0 +1,74 @@
+<div class="app-content">
+  <mat-card class="example-card">
+    <mat-card-header >
+      <mat-card-title>Sign-Up</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="error-message-wrapper" *ngIf="errorMsg">
+        <mat-icon color="warn">error</mat-icon>
+        <span class="error-message">{{errorMsg}}</span>
+      </div>
+      <form role="form" #signupForm="ngForm" (ngSubmit)="register(signupForm)" class="form-signup-form">
+        <div class="form-fields-wrapper">
+          <div class="form-field-row">
+            <mat-form-field class="form-field-column">
+              <input matInput name="firstName" ngModel #firstName="ngModel" id="firstName" placeholder="First name" required/>
+              <mat-error *ngIf="(firstName.touched || firstName.dirty) && firstName.invalid">
+                First name is
+                <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class="form-field-column">
+              <input matInput name="lastName" ngModel #lastName="ngModel" id="lastName" placeholder="Last name" required/>
+              <mat-error *ngIf="(lastName.touched || lastName.dirty) && lastName.invalid">
+                Last name is
+                <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="form-field-row">
+            <mat-form-field class="form-field-column">
+              <input matInput name="userId" ngModel #userId="ngModel" id="userId" placeholder="User Id" required/>
+              <mat-error *ngIf="(userId.touched || userId.dirty) && userId.invalid">
+                User Id is
+                <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class="form-field-column">
+              <span matPrefix>+91 &nbsp;</span>
+              <input matInput name="userMobile" ngModel #userMobile="ngModel" id="userMobile" placeholder="Mobile phone" required pattern="^(\+\d{1,3}[- ]?)?\d{10}$"
+              />
+              <mat-error *ngIf="(userMobile.touched || userMobile.dirty) && userMobile.invalid">
+                Mobile phone is
+                <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="form-field-row">
+            <mat-form-field class="form-field-column">
+              <input matInput placeholder="Password" id="userPassword" [type]="!showPassword ? 'password' : 'text'" name="userPassword" ngModel #userPassword="ngModel"
+                required/>
+              <mat-icon class="mat-icon-link" matSuffix (click)="showPassword = !showPassword">{{!showPassword ? 'visibility' : 'visibility_off'}}</mat-icon>
+              <mat-error *ngIf="(userPassword.touched || userPassword.dirty) && userPassword.invalid">
+                Password is
+                <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class="form-field-column">
+              <input matInput name="userRole" id="userRole" ngModel #userRole="ngModel" placeholder="Role" required/>
+              <mat-error *ngIf="(userRole.touched || userRole.dirty) && userRole.invalid">
+                Role is
+                <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="form-submit-wrapper">
+          <button id="create-account" type="submit" mat-raised-button color="primary">Create Account</button>
+          <span class="flex-spacer"></span>
+          <a mat-raised-button routerLink="/login">Cancel</a>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
