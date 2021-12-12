@@ -1,4 +1,4 @@
-name: push-develop
+name: push-pr-develop
 on: [push]
 jobs:
   build:
